@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/banner.svg" width="600" alt="readme-pro">
+  <img src="assets/wordmark.svg" width="600" alt="readme-pro">
 
   <p><strong>OpenCode skills that build READMEs that fucking slap.</strong><br>
   Three intensity levels, a router that knows what each project actually
@@ -12,7 +12,7 @@
     <img alt="evals: 60/60 with skill" src="https://img.shields.io/badge/evals-60%2F60_with_skill-D71921?style=flat-square">
   </p>
 
-  <img src="assets/levels.svg" width="640" alt="The three intensity levels: LOW, MEDIUM, HIGH">
+  <img src="assets/intensity.svg" width="640" alt="The three intensity levels: LOW, MEDIUM, HIGH">
 </div>
 
 <p align="center">
