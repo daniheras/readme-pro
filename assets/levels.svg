@@ -4,8 +4,8 @@
   <!-- LOW -->
   <rect x="40" y="34" width="640" height="74" rx="10" fill="#222222"/>
   <text x="64" y="79" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="19" font-weight="bold" fill="#8A8A8A">LOW</text>
-  <text x="150" y="78" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="#EDEDED">qu&#233; hace &#183; install &#183; ejemplo</text>
-  <text x="656" y="78" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#6C6C74">60 s de lectura</text>
+  <text x="150" y="78" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="#EDEDED">what it does &#183; install &#183; example</text>
+  <text x="656" y="78" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#6C6C74">60 s read</text>
 
   <!-- MEDIUM -->
   <rect x="40" y="132" width="640" height="74" rx="10" fill="#222222"/>
@@ -14,7 +14,7 @@
   <rect x="214" y="161" width="48" height="16" rx="8" fill="#3F3F3F"/>
   <rect x="268" y="161" width="48" height="16" rx="8" fill="#3F3F3F"/>
   <text x="340" y="177" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="#EDEDED">pitch &#183; badges &#183; config</text>
-  <text x="656" y="177" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#6C6C74">la puerta</text>
+  <text x="656" y="177" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#6C6C74">front door</text>
 
   <!-- HIGH -->
   <rect x="40" y="230" width="640" height="74" rx="10" fill="#2A1214"/>
@@ -23,6 +23,6 @@
   <rect x="196" y="256" width="30" height="14" rx="7" fill="#D71921"/>
   <rect x="232" y="256" width="30" height="14" rx="7" fill="#D71921"/>
   <rect x="272" y="248" width="56" height="28" rx="4" fill="#D71921"/>
-  <text x="348" y="275" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="#EDEDED">banner &#183; hero &#183; galer&#237;a</text>
-  <text x="656" y="275" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#B07576">escaparate</text>
+  <text x="348" y="275" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="#EDEDED">banner &#183; hero &#183; gallery</text>
+  <text x="656" y="275" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#B07576">showcase</text>
 </svg>

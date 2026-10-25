@@ -1,20 +1,21 @@
-# Contribuir a readme-pro
+# Contributing to readme-pro
 
-PRs bienvenidas — sobre todo si vienen con un caso de eval que las justifique.
+PRs welcome — especially when they come with an eval case that justifies
+them.
 
-## Cómo
+## How
 
-1. Fork + branch (`feat/mi-cosa`).
-2. Si tocas una receta (`SKILL.md`), explica el *por qué* en la PR: las reglas
-   que no saben por qué existen, no sobreviven.
-3. Si añades un caso límite, añade también la eval en `evals/evals.json`
-   (fixture incluido) — el grading es la única forma honesta de demostrar que
-   la skill mejora y no solo cambia.
-4. Los fixtures son proyectos pequeños pero reales: su código debe funcionar.
-5. Tono: el contenido de las skills va sobrio y en inglés; este repo va como
-   va. Respeta ambos registros.
+1. Fork + branch (`feat/my-thing`).
+2. If you touch a recipe (`SKILL.md`), explain the *why* in the PR: rules
+   that don't know why they exist don't survive.
+3. If you add an edge case, add the eval too (`evals/evals.json`, fixture
+   included) — grading is the only honest way to show the skill improved
+   rather than just changed.
+4. Fixtures are small but real: their code must actually work.
+5. Tone: skill content is sober English; this repo itself swears a little.
+   Respect both registers.
 
-## No fabricar
+## Don't fabricate
 
-Vale para las skills y para las PRs: nada de badges sin respaldo, nada de
-screenshots que no son reales, nada de evals cuyos números no puedas mostrar.
+Applies to the skills and to PRs: no badges without backing, no screenshots
+that aren't real, no eval numbers you can't show.
