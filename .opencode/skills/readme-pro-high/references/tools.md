@@ -1,15 +1,48 @@
 # Polish tools (HIGH level)
 
-Concrete tooling for the showcase recipe. All commands assume the target repo
-is the working directory.
+Tiered tooling for the showcase recipe. Tier 0 needs no installs; the rest
+are optional upgrades — detect before use, never block on them. All commands
+assume the target repo is the working directory.
 
-## vhs — terminal GIFs as code
+**Detect before use:**
+
+```sh
+magick -version   # Tier 1: ImageMagick
+vhs --version     # Tier 2: vhs (also needs ttyd + ffmpeg)
+```
+
+Install hints by OS (optional upgrades only):
+
+| Tool | Linux | macOS | Windows |
+|---|---|---|---|
+| ImageMagick 7 | `pacman -S imagemagick` / `apt install imagemagick` / `dnf install ImageMagick` | `brew install imagemagick` | `winget install ImageMagick.ImageMagick` (or use WSL) |
+| vhs | `pacman -S vhs` (needs `ttyd` + `ffmpeg`) | `brew install vhs` | WSL recommended |
+
+## Tier 0 — hand-authored SVG (no tools at all)
+
+SVG is plain text: write banner and palette strips by hand and commit them.
+GitHub renders them from relative paths.
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160">
+  <rect width="640" height="160" fill="#191919"/>
+  <text x="320" y="88" text-anchor="middle" font-family="monospace"
+        font-size="40" fill="#EDEDED">&#9656; graphite_</text>
+  <rect x="492" y="60" width="22" height="34" fill="#D71921"/>
+</svg>
+```
+
+Reference it with `<div align="center"><img src="assets/banner.svg" width="640" alt="graphite"></div>`
+and add `width=` so mobile scales. Build palette strips the same way: one
+`<rect>` per swatch from the project's palette.
+
+## Tier 2 — vhs: terminal GIFs as code
 
 <https://github.com/charmbracelet/vhs>
 
 - A `.tape` file is a script that renders into a GIF: hero demos become
   reproducible, and the tape belongs in the repo.
-- Dependencies: `ttyd` + `ffmpeg`. Arch: `pacman -S vhs`.
+- Dependencies: `ttyd` + `ffmpeg` (install hints in the table above).
 - Outputs GIF / MP4 / WebM / PNG. `vhs record` captures real keystrokes.
 
 Example tape with a themed "window" look:
@@ -72,11 +105,12 @@ Useful dynamic endpoints:
 Colors are customizable — match the project palette. Use sparingly; cards are
 for profile READMEs, not every project README.
 
-## Framing screenshots (rounded + border + shadow)
+## Tier 1 — framing screenshots (rounded + border + shadow)
 
-Use the bundled script — it normalizes virtual-canvas geometry, rounds the
-corners, draws a 2px border along the rounded contour, adds a drop shadow,
-and pads symmetrically so the blur isn't clipped:
+Only when ImageMagick is present; otherwise ship the raw screenshot. The
+bundled script normalizes virtual-canvas geometry, rounds the corners, draws
+a 2px border along the rounded contour, adds a drop shadow, and pads
+symmetrically so the blur isn't clipped:
 
 ```sh
 scripts/frame-image.sh screenshots/*.png

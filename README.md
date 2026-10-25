@@ -32,6 +32,10 @@ features que no corren. Un README que miente lo pillas en el primer clone.
 sobrios? No es hipocresía, es exactamente el principio de la skill: el tono
 lo pone el proyecto, no la plantilla.
 
+**Cero dependencias:** funciona en cualquier SO sin instalar nada previo —
+escritura, SVG hechos a mano y servicios web. ImageMagick o vhs son mejoras
+opcionales: la skill los detecta y solo los usa si ya están.
+
 ## Instalar
 
 **En un proyecto** — copia las carpetas de skills que quieras:

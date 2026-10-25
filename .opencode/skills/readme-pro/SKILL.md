@@ -77,3 +77,9 @@ each, and let the user pick.
 - Real examples only: commands the reader can run, output that is real.
 - Match the project's tone; sober by default, personality where the project
   has one.
+- **Zero-dependency guarantee:** the skill must deliver on any OS with
+  nothing installed. Writing, hand-authored SVG assets, and web services
+  (shields.io) need no tools. Anything that does need a tool (ImageMagick,
+  vhs) is detected first and used only when present; otherwise fall back to
+  a tool-free equivalent and list the upgrade as optional — never as a
+  blocker.

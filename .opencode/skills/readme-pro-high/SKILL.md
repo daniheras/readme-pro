@@ -28,19 +28,35 @@ theme applied.
 - **No visual identity yet?** Propose one (accent color + wordmark or
   monogram) and confirm with the user before building assets.
 
+## Tool tiers — the zero-dependency guarantee
+
+The README must be deliverable on any OS with nothing installed. Never block
+on a tool; climb tiers only when the tool is actually there:
+
+- **Tier 0 — always available, no installs:** hand-authored SVG assets
+  (banner, palette strip — SVG is plain text, write it), shields.io badge
+  URLs (a web service), tables, and centered HTML. This alone can carry a
+  complete showcase README.
+- **Tier 1 — if ImageMagick is present** (`magick -version`): frame real
+  screenshots with `scripts/frame-image.sh`. If it is missing, ship the raw
+  screenshot — it renders fine, just plainer.
+- **Tier 2 — user opt-in only:** vhs terminal GIFs (needs ttyd + ffmpeg).
+  Offer it; if the user installs it, record the hero. Otherwise ship the
+  `.tape` as the documented pipeline with the hero slot left wired for the
+  generated GIF.
+
 ## Step 2 — Structure
 
-1. **Banner** — centered; SVG wordmark or rendered image; matches the
-   palette.
+1. **Banner** — centered; hand-authored SVG wordmark (Tier 0) or rendered
+   image; matches the palette.
 2. **Badge row** — one consistent style (flat or flat-square); platform badge
    ("made for X"), version, license, CI. Badge tokens may carry the accent
-   color.
-3. **Hero demo** — a GIF or short video of the real thing. For terminal
-   projects use vhs: the `.tape` file is code, versioned in the repo (see
-   `references/tools.md`). Elsewhere: frame real screenshots with
-   `scripts/frame-image.sh` (rounded corners, subtle border, drop shadow —
-   works on any GitHub theme). The hero sits above the fold; install must not
-   drown below it.
+   color. shields.io URLs make this Tier 0.
+3. **Hero demo** — the best available in this order: recorded GIF (Tier 2,
+   via vhs with a versioned `.tape` — see `references/tools.md`), framed
+   screenshot (Tier 1, via `scripts/frame-image.sh`), raw real screenshot or
+   Tier 0 visual (always works). The hero sits above the fold; install must
+   not drown below it.
 4. **Nav / TOC** — linked section list right after the hero.
 5. `## Features` — bolded lead-ins, capability-oriented.
 6. `## Install` — a table for variants/platforms; keep it scannable.
@@ -73,8 +89,9 @@ theme applied.
 
 - [ ] Identity derived from the project, not generic
 - [ ] Banner + badge row + hero above the fold; install reachable in one scroll
-- [ ] Hero shows the real product (GIF via vhs for terminal projects, or a
-      framed real screenshot); no mocked or fabricated imagery
+- [ ] Hero shows the real product at the best available tier (GIF via vhs,
+      framed screenshot, raw screenshot, or hand-authored SVG); no mocked or
+      fabricated imagery
 - [ ] Assets in-repo with relative paths; GIF size checked
 - [ ] TOC links work; heading style consistent
 - [ ] Install table covers the real variants
