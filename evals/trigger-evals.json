@@ -1,0 +1,26 @@
+{
+  "skill_name": "readme-pro",
+  "note": "Manual trigger set following skill-creator methodology. Re-review these when editing any description. Description optimization must cover the SHOULD list (phrasings, Spanish, partial tasks, no-keyword cases) while respecting the SHOULD-NOT boundaries.",
+  "queries": [
+    {"query": "oye mi repo de dotfiles está desnudo, móntame algo que no dé vergüenza pasarle el link a la gente", "should_trigger": true, "expected_level": "auto->HIGH"},
+    {"query": "I just pushed my JSON schema validator, no README yet. Want something clean before sharing it on r/golang", "should_trigger": true, "expected_level": "auto->LOW/MEDIUM"},
+    {"query": "write me a readme for my cli tool, keep it simple", "should_trigger": true, "expected_level": "auto->LOW"},
+    {"query": "my README is embarrassing - emoji soup and fake install steps. Fix it without making it sound like an ad", "should_trigger": true, "expected_level": "auto->MEDIUM"},
+    {"query": "I'm releasing my terminal theme this weekend and I want the front page to slap. Banner, demo gif, the works", "should_trigger": true, "expected_level": "auto->HIGH"},
+    {"query": "add a proper badge row and license section to my README, and fix the install instructions", "should_trigger": true, "expected_level": "auto->MEDIUM"},
+    {"query": "preparing this repo for open source: README, LICENSE, the basics", "should_trigger": true, "expected_level": "auto"},
+    {"query": "documenta este proyecto antes de que lo herede alguien del equipo", "should_trigger": true, "expected_level": "auto"},
+    {"query": "make my project's GitHub page look like doomemacs's readme", "should_trigger": true, "expected_level": "HIGH"},
+    {"query": "our tool has no docs beyond code comments - start us off with something people can actually use", "should_trigger": true, "expected_level": "auto"},
+    {"query": "write a CONTRIBUTING.md for my repo", "should_trigger": false},
+    {"query": "summarize changes since last release into CHANGELOG.md", "should_trigger": false},
+    {"query": "find and fix dead relative links across my repo, including the README", "should_trigger": false},
+    {"query": "write a blog post announcing v2 of my library", "should_trigger": false},
+    {"query": "create an ARCHITECTURE.md explaining the internal design", "should_trigger": false},
+    {"query": "generate a GitHub Actions workflow that runs pytest", "should_trigger": false},
+    {"query": "review my README's grammar and typos only - don't touch anything else", "should_trigger": false},
+    {"query": "design a landing page for my SaaS", "should_trigger": false},
+    {"query": "convert my README.md to reStructuredText", "should_trigger": false},
+    {"query": "write release notes for v1.4.0 from the merged PRs", "should_trigger": false}
+  ]
+}

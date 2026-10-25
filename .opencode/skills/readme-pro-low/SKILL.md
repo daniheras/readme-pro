@@ -1,6 +1,6 @@
 ---
 name: README Pro — Low
-description: Write or upgrade a README in the minimal, documentation-first style - no badges, no images, no marketing. Choose this level whenever the user asks for something simple, clean, sober, or "sin florituras", or the target is a plain library, CLI, script collection, or internal tool. Use instead of readme-pro when the level is already known.
+description: Write or upgrade a README in the minimal, documentation-first style - no badges, no images, no marketing. Choose this level when the user asks for something simple, clean, sober, basic, or "sin florituras", or the target is a plain library, CLI, script collection, or internal tool shared with peers. Use instead of readme-pro when the level is already known.
 ---
 
 # Level: LOW — documentation first

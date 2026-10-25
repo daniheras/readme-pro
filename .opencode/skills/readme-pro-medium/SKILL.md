@@ -1,6 +1,6 @@
 ---
 name: README Pro — Medium
-description: Write or upgrade a README to the standard professional form - pitch, informative badges, screenshot when there is UI, install, usage, configuration, contributing, license. Choose this level when the user asks for a professional or standard README for an app, library, or tool with a public audience. Use instead of readme-pro when the level is already known.
+description: Write or upgrade a README to the standard professional form - pitch, truthful badges, screenshot when there is UI, install, usage, configuration, contributing, license. Choose this level when the user wants a trustworthy professional README for a public-facing app, library, or tool, or asks to fix hype, broken install steps, or add a proper badge row. Use instead of readme-pro when the level is already known.
 ---
 
 # Level: MEDIUM — the front door

@@ -1,6 +1,6 @@
 ---
 name: README Pro
-description: Assess any project and create or upgrade its README at the right intensity - minimal, standard, or showcase. Use for EVERY README task by default - when the user mentions README, readme.md, docs polish, or repo front page, wants to add badges, banners, demo GIFs, or screenshots, is about to open-source a project, or complains their repo looks plain - even if they never say the word README. After assessing, loads readme-pro-low, readme-pro-medium, or readme-pro-high.
+description: Assess any project and create or upgrade its README at the right intensity - minimal, standard, or showcase. Use for EVERY README task by default - creating one from scratch, rebuilding an embarrassing one, adding badges or a license section, prepping a repo for open source, making a GitHub page stop people scrolling, or "documenting the project" in any phrasing (Spanish or English) - even when the word README never appears. NOT for adjacent artifacts (CONTRIBUTING.md, CHANGELOG.md, ARCHITECTURE.md, release notes, blog posts, landing pages), link linting, or mechanical format conversion. After assessing, loads readme-pro-low, readme-pro-medium, or readme-pro-high.
 ---
 
 # README Pro — route to the right README

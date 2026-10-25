@@ -1,6 +1,6 @@
 ---
 name: README Pro — High
-description: Build a showcase README - banner, badge row, hero demo GIF or framed screenshot, TOC, gallery, community extras. Choose this level whenever look and feel is part of the product (UIs, TUIs, themes, dotfiles, rices) or the user wants a wow-factor front page ("chulo", impressive, eye-catching). Use instead of readme-pro when the level is already known.
+description: Build a showcase README - banner, badge row, hero demo GIF or honest placeholder, nav, gallery, community extras. Choose this level whenever look and feel is part of the product (UIs, TUIs, themes, dotfiles, rices) or the user wants the front page to impress ("slap", "que luzca", "like doomemacs", eye-catching). Delivers on any OS with zero required installs thanks to tool tiers. Use instead of readme-pro when the level is already known.
 ---
 
 # Level: HIGH — showcase
