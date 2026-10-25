@@ -1,44 +1,48 @@
 # readme-pro
 
-OpenCode skills that build READMEs matched to each project's philosophy — from
-brutally minimal to full showcase. One skill family, three intensity levels,
-one automatic router.
+Skills de OpenCode para montar READMEs de puta madre. Tres niveles de
+intensidad, un router que sabe qué le toca a cada proyecto, y cero plantillas
+maximalistas pegadas con escupe.
 
-Not every project needs a hero GIF; a JSON parser with a banner row looks
-silly, and a terminal theme without a demo GIF is missing the point. Instead
-of one maximal template, readme-pro assesses the project and picks the
-intensity that fits: what to include, what to leave out, and how loud to be.
+Porque no: no todos los proyectos necesitan un GIF hero ni una fila de
+quince badges. Un parser de JSON con banner parece un creador de contenido,
+y un tema de terminal sin GIF demo es casi un delito. La gracia no es
+decorar todo — es saber leer cada repo y darle la intensidad que merece.
 
-## The four skills
+## Las cuatro skills
 
-| ID | Loads when | Produces |
+| ID | Cuándo se carga | Qué te deja |
 |---|---|---|
-| `readme-pro` | Any README task, by default | Assesses the project, picks a level, routes to the matching recipe |
-| `readme-pro-low` | User wants simple/clean/sober; plain libraries, CLIs, internal tools | Documentation-first README: no badges, no images, no marketing |
-| `readme-pro-medium` | User wants a professional/standard README; public-facing apps and tools | Front-door README: pitch, informative badges, screenshot if there's UI, install, usage, configuration |
-| `readme-pro-high` | Look and feel *is* the product: UIs, TUIs, themes, dotfiles — or "wow" requests | Showcase README: banner, badge row, hero demo GIF, TOC, gallery, community extras |
+| `readme-pro` | Cualquier tarea de README, por defecto | Evalúa el proyecto, elige nivel y enruta a la receta que toca |
+| `readme-pro-low` | Quieres algo simple/limpio/sobrio; librerías, CLIs, herramientas internas | README documentación-primero: sin badges, sin imágenes, sin marketing |
+| `readme-pro-medium` | Quieres un README profesional/estándar; apps y tools con público | README puerta de entrada: pitch, badges que informan, screenshot si hay UI, install, usage, configuración |
+| `readme-pro-high` | Cuando el look ES el producto: UIs, TUIs, temas, dotfiles — o peticiones "que quede chulo" | README escaparate: banner, fila de badges, GIF hero, TOC, galería, extras de comunidad |
 
-The three philosophies they encode:
+Las tres filosofías que codifican:
 
-- **LOW (Yegor school)** — the README is read, not looked at. Every line must inform.
-- **MEDIUM (makeareadme / thoughtbot school)** — the README is the front door. What & why in one screen, working install in two.
-- **HIGH (doomemacs / sniffnet school)** — the README is part of the product experience. Identity first: derive palette, imagery, and tone from the project itself.
+- **LOW (escuela Yegor)** — el README se lee, no se mira. Cada línea informa o sobra.
+- **MEDIUM (makeareadme / thoughtbot)** — el README es la puerta de entrada. Qué y por qué en una pantalla, install funcionando en dos.
+- **HIGH (doomemacs / sniffnet)** — el README es parte de la experiencia del producto. Identidad primero: la paleta sale del propio proyecto, no de un shield azul genérico.
 
-All levels share one rule: **never fabricate**. No badge for CI that doesn't
-exist, no license badge without a LICENSE file, no mocked screenshots. A
-README that lies gets caught on the first clone.
+Regla compartida de los tres niveles: **no fabricar nada**. Ni badge de CI
+que no existe, ni badge de licencia sin fichero LICENSE, ni screenshots de
+features que no corren. Un README que miente lo pillas en el primer clone.
 
-## Install
+¿Y que este README vaya con tacos mientras las skills escriben READMEs
+sobrios? No es hipocresía, es exactamente el principio de la skill: el tono
+lo pone el proyecto, no la plantilla.
 
-**In a project** — copy the skill folders you want:
+## Instalar
+
+**En un proyecto** — copia las carpetas de skills que quieras:
 
 ```sh
-cp -r readme-pro/.opencode/skills/readme-pro* your-repo/.opencode/skills/
+cp -r readme-pro/.opencode/skills/readme-pro* tu-repo/.opencode/skills/
 ```
 
-**Globally** — same, into `~/.config/opencode/skills/`.
+**Global** — lo mismo pero a `~/.config/opencode/skills/`.
 
-**As a source** — point your `opencode.jsonc` at this repo:
+**Como fuente** — apunta tu `opencode.jsonc` a este repo:
 
 ```jsonc
 {
@@ -47,37 +51,39 @@ cp -r readme-pro/.opencode/skills/readme-pro* your-repo/.opencode/skills/
 }
 ```
 
-## Usage
+## Uso
 
-In any OpenCode session:
+En cualquier sesión de OpenCode:
 
-- *"write a README for this project"* → `readme-pro` assesses and routes.
-- *"make it minimal, no badges"* → load `readme-pro-low` directly.
-- *"I want the front page to slap"* → `readme-pro-high`.
+- *«escríbeme un readme para este proyecto»* → `readme-pro` evalúa y enruta.
+- *«déjalo mínimo, sin badges»* → carga `readme-pro-low` directamente.
+- *«quiero que la portada pegue fuerte»* → `readme-pro-high`.
 
-The router states the chosen level and the reason in one line, and the
-recipe's checklist runs before the README is delivered.
+El router dice en una línea qué nivel ha elegido y por qué, y la receta pasa
+su checklist antes de darte el README por bueno.
 
 ## Evals
 
-Test cases live in `evals/evals.json` with small real fixtures under
-`evals/fixtures/` (a CLI tool, a Hyprland theme, an app with a bad README to
-rebuild). They cover routing correctness, structure, and the no-fabrication
-rule. Run outputs land in `evals/workspace/` (gitignored).
+Los tests viven en `evals/evals.json` con fixtures pequeños pero reales en
+`evals/fixtures/` (un CLI, un tema de Hyprland, una app con un README
+vergonzoso que reconstruir). Cubren el routing, la estructura y la regla de
+no-fabricar. Los outputs de cada ronda caen en `evals/workspace/`
+(gitignoreado).
 
-## Sources
+## Fuentes
 
-The skills distill a curated study list: [Make a README](https://www.makeareadme.com/),
+Toda la skill es una destilación de una lista de estudio curada:
+[Make a README](https://www.makeareadme.com/),
 [The Art of README](https://github.com/hacktivistto/The-Art-of-README),
-[thoughtbot's guide](https://thoughtbot.com/blog/how-to-write-a-great-readme),
+[la guía de thoughtbot](https://thoughtbot.com/blog/how-to-write-a-great-readme),
 [README-Driven Development](https://tom.preston-werner.com/2010/08/23/readme-driven-development.html),
 [Elegant READMEs](https://www.yegor256.com/2019/04/23/elegant-readme.html),
 [ARCHITECTURE.md](https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html),
-[awesome-readme](https://github.com/matiassingers/awesome-readme), plus
-[vhs](https://github.com/charmbracelet/vhs) and
-[shields.io](https://shields.io/) for the showcase tooling. Full annotated
-list: `.opencode/skills/readme-pro-high/references/examples.md`.
+[awesome-readme](https://github.com/matiassingers/awesome-readme), y para el
+escaparate [vhs](https://github.com/charmbracelet/vhs) y
+[shields.io](https://shields.io/). La lista anotada completa está en
+`.opencode/skills/readme-pro-high/references/examples.md`.
 
-## License
+## Licencia
 
 [MIT](LICENSE)
