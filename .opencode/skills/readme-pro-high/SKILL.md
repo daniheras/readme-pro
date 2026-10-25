@@ -57,7 +57,8 @@ on a tool; climb tiers only when the tool is actually there:
    screenshot (Tier 1, via `scripts/frame-image.sh`), raw real screenshot or
    Tier 0 visual (always works). The hero sits above the fold; install must
    not drown below it.
-4. **Nav / TOC** — linked section list right after the hero.
+4. **Nav / TOC** — a linked section list right after the hero: either a
+   headed contents block or a compact inline anchor row.
 5. `## Features` — bolded lead-ins, capability-oriented.
 6. `## Install` — a table for variants/platforms; keep it scannable.
 7. `## Usage` — real examples; for TUIs, keybinding tables.

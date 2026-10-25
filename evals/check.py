@@ -73,6 +73,15 @@ def ci_badge(text: str) -> bool:
     )
 
 
+def has_nav(readme: str) -> bool:
+    """Nav exists: a headed TOC or an inline anchor list (>= 4 internal links)."""
+    if TOC_HEADING.search(readme):
+        return True
+    # inline nav: markdown anchor links or HTML href="#..." (>= 4)
+    anchors = re.findall(r"\]\(#[^)\s]+\)|href=\"#", readme)
+    return len(anchors) >= 4
+
+
 def heading_pos(text: str, name: str):
     m = re.search(rf"^#+\s*{name}\b", text, re.I | re.M)
     return m.start() if m else None
@@ -116,10 +125,10 @@ def checks_for(eid: int, readme: str, project: Path):
         c += [
             ("Theme palette drives design (#191919 / #D71921 present)",
              "191919" in readme.lower() and "d71921" in readme.lower()),
-            ("Showcase structure: banner/hero + TOC + install + community",
+            ("Showcase structure: banner/hero + nav + install + community",
              all([
                  re.search(r"hero|banner", readme, re.I),
-                 TOC_HEADING.search(readme),
+                 has_nav(readme),
                  re.search(r"^#+\s*install\b", readme, re.I | re.M),
                  re.search(r"community|contributing|license", readme, re.I),
              ])),
@@ -162,11 +171,11 @@ def checks_for(eid: int, readme: str, project: Path):
         tapes = list(project.rglob("*.tape"))
         svgs = local_svgs(project)
         c += [
-            ("Showcase structure: banner + badges + TOC + install + community",
+            ("Showcase structure: banner + badges + nav + install + community",
              all([
                  re.search(r"hero|banner", readme, re.I),
                  len(badge_urls(readme)) >= 1,
-                 TOC_HEADING.search(readme),
+                 has_nav(readme),
                  re.search(r"^#+\s*install\b", readme, re.I | re.M),
                  re.search(r"community|contributing|license", readme, re.I),
              ])),
