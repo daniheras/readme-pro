@@ -74,6 +74,11 @@ on a tool; climb tiers only when the tool is actually there:
   noise not.
 - Assets are versioned in the repo (`docs/`, `assets/`) and referenced by
   relative path.
+- **Screenshots must be real captures.** Rendering HTML mocks and presenting
+  them as screenshots is fabrication, however faithful the render. When no
+  capture is possible, use the placeholder pattern: a commented hero/gallery
+  block ready to uncomment, plus the documented pipeline (`.tape`, capture
+  scripts) so anyone can produce the real asset later.
 - Hero GIF at roughly 5 MB or less; prefer MP4/WebM above that; optimize
   frames (see `references/tools.md`).
 - Badges must be real (existing CI, releases, license).

@@ -3,20 +3,17 @@
 
 Checks the objective expectations from evals/evals.json against a run's
 README (and project dir). Qualitative expectations (tone, routing rationale,
-audit-first behavior) are graded by a human or grader agent and merged into
+audit-first ordering) are graded by a human or grader agent and merged into
 the final grading.json afterwards.
 
 Usage:
     python3 evals/check.py <eval_id> <project_dir> [--json]
-
-  <eval_id>      1 | 2 | 3 (matches evals/evals.json)
-  <project_dir>  the run's project copy (contains README.md)
-  --json         emit the results as a JSON array instead of a report
 """
 
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 EMOJI = re.compile(
@@ -33,6 +30,12 @@ UNCERTAINTY = re.compile(
     re.IGNORECASE,
 )
 TOC_HEADING = re.compile(r"^#{1,3}\s*(table of contents|contents|toc|index)\b", re.I | re.M)
+TOOL_INSTALL_REQUIRED = re.compile(
+    r"(must|need to|first,?\s*)?(install|brew install|pacman -S|apt install|dnf install|winget install)"
+    r"[^\n]*\b(imagemagick|magick|vhs|ffmpeg|ttyd)\b",
+    re.IGNORECASE,
+)
+MEDIUM_ORDER = ["Features", "Install(ation)?", "Usage", "Contributing", "License"]
 
 
 def read(path: Path) -> str:
@@ -54,8 +57,12 @@ def remote_asset_urls(text: str):
     ]
 
 
-def badge_count(text: str) -> int:
-    return len(re.findall(r"img\.shields\.io", text))
+def badge_urls(text: str):
+    return re.findall(r"https?://img\.shields\.io/[^\s\)\"]+", text)
+
+
+def badge_styles(text: str):
+    return sorted(set(re.findall(r"style=([\w-]+)", " ".join(badge_urls(text)))))
 
 
 def ci_badge(text: str) -> bool:
@@ -64,6 +71,24 @@ def ci_badge(text: str) -> bool:
         or re.search(r"badge/[^\s\)\]]*ci[^\s\)\]]*", text, re.I)
         or re.search(r"actions/workflows/[^\s\)\]]*badge\.svg", text, re.I)
     )
+
+
+def heading_pos(text: str, name: str):
+    m = re.search(rf"^#+\s*{name}\b", text, re.I | re.M)
+    return m.start() if m else None
+
+
+def local_svgs(project: Path):
+    return list(project.rglob("*.svg"))
+
+
+def svg_uses_palette(svg_path: Path, colors) -> bool:
+    try:
+        content = svg_path.read_text(encoding="utf-8")
+        ET.fromstring(content)  # validity
+        return True
+    except (FileNotFoundError, ET.ParseError):
+        return False
 
 
 def checks_for(eid: int, readme: str, project: Path):
@@ -85,7 +110,9 @@ def checks_for(eid: int, readme: str, project: Path):
         ]
 
     elif eid == 2:
-        tape_in_repo = list(project.rglob("*.tape"))
+        tapes = list(project.rglob("*.tape"))
+        banners = [p for p in local_svgs(project) if "banner" in p.name or "hero" in p.name]
+        styles = badge_styles(readme)
         c += [
             ("Theme palette drives design (#191919 / #D71921 present)",
              "191919" in readme.lower() and "d71921" in readme.lower()),
@@ -97,20 +124,26 @@ def checks_for(eid: int, readme: str, project: Path):
                  re.search(r"community|contributing|license", readme, re.I),
              ])),
             ("Hero is a .tape plan or marked placeholder (no fake remote screenshots)",
-             bool(tape_in_repo) or "tape" in readme.lower()
-             or not remote_asset_urls(readme)),
+             bool(tapes) or "tape" in readme.lower() or not remote_asset_urls(readme)),
+            ("Banner SVG exists and is valid XML (Tier 0 asset)",
+             any(svg_uses_palette(b, None) for b in banners)),
             ("No CI or release badges",
              not re.search(r"img\.shields\.io/[^\s\)\]]*(?:actions|v/tag|releases)", readme, re.I)),
             ("Install matches install.sh (backup + ~/.config)",
              re.search(r"\.config|install\.sh", readme) is not None),
             ("Proposes LICENSE and CONTRIBUTING",
              "LICENSE" in readme and "CONTRIBUTING" in readme),
+            ("Badge row uses one consistent style",
+             len(styles) <= 1),
         ]
 
     elif eid == 3:
+        positions = [heading_pos(readme, s) for s in MEDIUM_ORDER]
         c += [
+            ("MEDIUM section order: Features -> Install -> Usage -> Contributing -> License",
+             all(p is not None for p in positions) and positions == sorted(positions)),
             ("Badge row <= 4 and truthful CI badge present",
-             badge_count(readme) <= 4 and ci_badge(readme)),
+             badge_count_ok(readme) and ci_badge(readme)),
             ("No emoji", not EMOJI.search(readme)),
             ("No hype words (blazing/fast/ultimate/...)",
              not HYPE_WORDS.search(readme)),
@@ -121,9 +154,41 @@ def checks_for(eid: int, readme: str, project: Path):
              all(f in readme for f in ("--radius", "--border", "--margin"))),
             ("Changelog removed or linked (not inlined)",
              not re.search(r"^###?\s*v\d+\.\d", readme, re.M)),
+            ("Badge styles consistent",
+             len(badge_styles(readme)) <= 1),
+        ]
+
+    elif eid == 4:
+        tapes = list(project.rglob("*.tape"))
+        svgs = local_svgs(project)
+        c += [
+            ("Showcase structure: banner + badges + TOC + install + community",
+             all([
+                 re.search(r"hero|banner", readme, re.I),
+                 len(badge_urls(readme)) >= 1,
+                 TOC_HEADING.search(readme),
+                 re.search(r"^#+\s*install\b", readme, re.I | re.M),
+                 re.search(r"community|contributing|license", readme, re.I),
+             ])),
+            ("Tool-free pipeline: no ImageMagick/vhs install required by the README",
+             not TOOL_INSTALL_REQUIRED.search(readme)),
+            ("Identity from theme.json (#FFB86C accent / #1B1B1F background present)",
+             "ffb86c" in readme.lower() and "1b1b1f" in readme.lower()),
+            ("Hand-authored SVG assets exist and are valid XML",
+             any(svg_uses_palette(s, None) for s in svgs)),
+            ("Hero is marked placeholder or .tape (no fake remote screenshots)",
+             bool(tapes) or "tape" in readme.lower() or not remote_asset_urls(readme)),
+            ("No CI or release badges",
+             not re.search(r"img\.shields\.io/[^\s\)\]]*(?:actions|v/tag|releases)", readme, re.I)),
+            ("No emoji in prose (showcase allows rich visuals, not noise)",
+             not EMOJI.search(readme)),
         ]
 
     return c
+
+
+def badge_count_ok(text: str) -> bool:
+    return 1 <= len(badge_urls(text)) <= 4
 
 
 def main() -> int:
@@ -139,7 +204,10 @@ def main() -> int:
         print(f"NO README found at {project / 'README.md'}")
         return 1
 
-    results = [{"text": t, "passed": bool(p), "evidence": "programmatic check"} for t, p in checks_for(eid, readme, project)]
+    results = [
+        {"text": t, "passed": bool(p), "evidence": "programmatic check"}
+        for t, p in checks_for(eid, readme, project)
+    ]
 
     if as_json:
         print(json.dumps(results, indent=2))

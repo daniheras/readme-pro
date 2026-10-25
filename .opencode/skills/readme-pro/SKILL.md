@@ -77,6 +77,10 @@ each, and let the user pick.
 - Real examples only: commands the reader can run, output that is real.
 - Match the project's tone; sober by default, personality where the project
   has one.
+- **Scope discipline:** a README task covers the README, its assets, and
+  files that back claims the README already makes (e.g., creating LICENSE
+  when the README claims MIT). Any other code or config change is flagged
+  for the owner, not silently made.
 - **Zero-dependency guarantee:** the skill must deliver on any OS with
   nothing installed. Writing, hand-authored SVG assets, and web services
   (shields.io) need no tools. Anything that does need a tool (ImageMagick,

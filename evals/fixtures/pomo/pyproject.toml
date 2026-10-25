@@ -1,0 +1,8 @@
+[project]
+name = "pomo"
+version = "0.9.0"
+description = "A tiny terminal pomodoro timer with no dependencies."
+requires-python = ">=3.8"
+
+[project.scripts]
+pomo = "pomo:main"

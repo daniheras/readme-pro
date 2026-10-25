@@ -41,6 +41,20 @@
         "Usage documents the real flags (--radius, --border, --margin) with a runnable example",
         "Empty ceremony sections are filled with real content or removed; the changelog is removed or linked"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Quiero publicar mi pequeño TUI en evals/fixtures/pomo y quiero que la portada luzca. Ojo: trabajo en una máquina bloqueada donde no puedo instalar nada - ni ImageMagick, ni vhs, ni chromium. El README tiene que quedar completo y bonito hoy mismo, con lo que haya.",
+      "expected_output": "A complete showcase README delivered with zero tooling: hand-authored SVG identity (amber accent #FFB86C from theme.json), shields.io badges via URLs, TOC, install, community; hero as a marked placeholder or .tape plan; no mocked screenshots; no required tool installs.",
+      "files": ["evals/fixtures/pomo/"],
+      "expectations": [
+        "The agent states the chosen level (HIGH/showcase) and a one-line reason",
+        "Showcase structure complete: banner, badge row, TOC, install, community",
+        "Visuals are tool-free: hand-authored SVG assets and web badges; the README/pipeline does not require installing ImageMagick or vhs to be complete",
+        "Identity derives from the project (accent #FFB86C / background #1B1B1F present in the design)",
+        "No fabricated imagery: hero is a marked placeholder or .tape plan, not a fake screenshot",
+        "No badges or claims for CI or releases the repo does not have"
+      ]
     }
   ]
 }

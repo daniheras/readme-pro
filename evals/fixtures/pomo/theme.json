@@ -1,0 +1,10 @@
+{
+  "name": "pomo default",
+  "description": "Warm amber on charcoal: focus without the harshness.",
+  "colors": {
+    "background": "#1B1B1F",
+    "foreground": "#E8E8E3",
+    "muted": "#6C6C74",
+    "accent": "#FFB86C"
+  }
+}
