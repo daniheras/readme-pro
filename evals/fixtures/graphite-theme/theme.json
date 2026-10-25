@@ -1,0 +1,12 @@
+{
+  "name": "graphite",
+  "description": "A quiet graphite theme with a single red accent, for Hyprland + Waybar + foot.",
+  "colors": {
+    "background": "#191919",
+    "foreground": "#EDEDED",
+    "muted": "#8A8A8A",
+    "border": "#3F3F3F",
+    "surface": "#222222",
+    "accent": "#D71921"
+  }
+}

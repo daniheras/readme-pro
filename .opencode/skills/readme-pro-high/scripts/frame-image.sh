@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# frame-image.sh — frame screenshots for a README: rounded corners, subtle
+# border, drop shadow on a transparent canvas. Looks right on any GitHub
+# theme.
+#
+#   scripts/frame-image.sh screenshots/*.png
+#
+# Env overrides: RADIUS=24 BORDER="#3F3F3F" MARGIN=48 SHADOW="40x20+0+10"
+#
+# Adapted from nothing-dark-configs/docs/image-frame.sh.
+set -euo pipefail
+
+RADIUS=${RADIUS:-24}
+BORDER=${BORDER:-"#3F3F3F"}
+MARGIN=${MARGIN:-48}
+SHADOW=${SHADOW:-"40x20+0+10"}
+
+frame() {
+  local img=$1
+  local sh=$SHADOW
+
+  local W H
+  local tmp
+  tmp=$(mktemp --suffix=.png)
+  trap 'rm -f "$tmp"' RETURN
+
+  # Normalize virtual-canvas geometry first: stale page offsets (from early
+  # crops) corrupt the flip/flop corner masks below — e.g. glitchy right corners.
+  magick "$img" +repage "$tmp"
+  W=$(magick identify -format '%w' "$tmp")
+  H=$(magick identify -format '%h' "$tmp")
+  local cr=$((RADIUS - 1))
+  local cw=$((W - 1)) ch=$((H - 1))
+
+  # 1. Round the corners (classic IM corner-mask recipe).
+  magick "$tmp" \
+    \( +clone -alpha extract \
+       -draw "fill black polygon 0,0 0,$cr $cr,0 fill white circle $cr,$cr $cr,0" \
+       \( +clone -flip \) \( +clone -flop \) \
+       \( +clone -flip \( +clone -flip \) -delete 0 \) \
+       \( +clone -flop \( +clone -flop \) -delete 0 \) \
+       -compose Multiply -composite \) \
+    -alpha off -compose CopyOpacity -composite +repage "$tmp"
+
+  # 2. 2px border drawn along the rounded contour.
+  magick "$tmp" \
+    \( -size "${W}x${H}" xc:none -fill none \
+       -stroke "$BORDER" -strokewidth 2 \
+       -draw "roundrectangle 1,1 $cw,$ch $cr,$cr" \) \
+    -compose over -composite +repage "$tmp"
+
+  # 3. Drop shadow on a transparent canvas.
+  magick "$tmp" \
+    \( +clone -background none -shadow "$SHADOW" \) +swap \
+    -background none -compose over -composite +repage "$tmp"
+
+  # 4. Symmetric padding to leave room for the blur.
+  magick "$tmp" -gravity center -background none \
+    -extent $((W + 2 * MARGIN))x$((H + 2 * MARGIN)) +repage "$img"
+}
+
+for img in "$@"; do
+  frame "$img"
+  echo "framed: $img"
+done

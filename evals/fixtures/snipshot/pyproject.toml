@@ -1,0 +1,8 @@
+[project]
+name = "snipshot"
+version = "1.2.0"
+description = "Frame screenshots with rounded corners, a border, and a drop shadow."
+requires-python = ">=3.9"
+
+[project.scripts]
+snipshot = "snipshot:main"

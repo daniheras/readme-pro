@@ -1,0 +1,8 @@
+[project]
+name = "todo-scan"
+version = "0.3.1"
+description = "Find TODO/FIXME/HACK comments across a tree and report them."
+requires-python = ">=3.9"
+
+[project.scripts]
+todo-scan = "todo_scan:main"

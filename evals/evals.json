@@ -1,0 +1,46 @@
+{
+  "skill_name": "readme-pro",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "oye, ¿me montas un README para esta herramienta? está en evals/fixtures/todo-scan. Nada de florituras, algo limpio que explique qué hace y cómo se usa. Ah, y es software libre pero aún no he decidido la licencia.",
+      "expected_output": "A minimal README.md inside the todo-scan fixture: pitch, install, real usage. No badges, no images, no TOC. The missing LICENSE is flagged, not invented. The agent states the chosen level and why.",
+      "files": ["evals/fixtures/todo-scan/"],
+      "expectations": [
+        "The agent states the chosen level (LOW/minimal) and a one-line reason",
+        "The README has a one-paragraph pitch, an Install section, and a real Usage example",
+        "No badges, no images, no TOC, no emoji anywhere in the README",
+        "The Usage example references the real entry point (todo-scan) and its actual flags (--fail-on-hit)",
+        "The README does not claim a specific license; it flags the missing LICENSE file or asks"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm about to open-source my terminal theme repo at evals/fixtures/graphite-theme and I want the README to make people stop scrolling. It should feel like the theme itself - quiet, dark, that red accent. I don't have screenshots yet; set up everything so I can generate the visuals.",
+      "expected_output": "A showcase README whose design derives from theme.json (graphite background, #D71921 accent). Banner, badge row, hero plan (vhs .tape or marked placeholder, never a fake screenshot), TOC, install matching install.sh, community extras proposed. No fabricated CI/release badges.",
+      "files": ["evals/fixtures/graphite-theme/"],
+      "expectations": [
+        "The theme palette (#191919 background, #D71921 accent) drives the design (banner, badge colors)",
+        "Showcase structure present: banner, badge row, hero section, TOC, install, community section",
+        "No fabricated imagery: the hero is a versioned vhs .tape or a clearly marked placeholder, not a fake screenshot URL",
+        "No badges or claims for CI or releases the repo does not have",
+        "The Install section matches install.sh behavior (timestamped backup, copy into ~/.config)",
+        "Proposes adding LICENSE and CONTRIBUTING.md"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The README at evals/fixtures/snipshot is embarrassing - full of hype and broken install steps, and it doesn't even show how to use the thing. Rebuild it: professional and trustworthy; this is a real project with CI. No flashy stuff, but a proper badge row and structure are fine.",
+      "expected_output": "The agent audits the old README (gap list) before rewriting, then delivers a medium-level README: truthful badge row including CI, corrected install, real usage, no marketing or emoji, ceremony sections cleaned up.",
+      "files": ["evals/fixtures/snipshot/"],
+      "expectations": [
+        "The agent shows an audit/gap list of the old README before or alongside the rewrite",
+        "Badge row has at most 4 badges and includes a CI badge backed by .github/workflows/ci.yml",
+        "Marketing adjectives and emoji are gone; no 'blazingly fast' style claims",
+        "Install is corrected to match the real package (pip install -e ., entry point snipshot - not snipshot-tool)",
+        "Usage documents the real flags (--radius, --border, --margin) with a runnable example",
+        "Empty ceremony sections are filled with real content or removed; the changelog is removed or linked"
+      ]
+    }
+  ]
+}
