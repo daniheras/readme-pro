@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" role="img" aria-label="the three readme-pro intensity levels">
+  <rect width="720" height="340" rx="12" fill="#191919"/>
+
+  <!-- LOW -->
+  <rect x="40" y="34" width="640" height="74" rx="10" fill="#222222"/>
+  <text x="64" y="79" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="bold" fill="#8A8A8A">LOW</text>
+  <text x="150" y="79" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#EDEDED">qu&#233; hace &#183; install &#183; ejemplo &#183; licencia</text>
+  <text x="656" y="79" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#6C6C74">60 s de lectura</text>
+
+  <!-- MEDIUM -->
+  <rect x="40" y="132" width="640" height="74" rx="10" fill="#222222"/>
+  <text x="64" y="177" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="bold" fill="#EDEDED">MEDIUM</text>
+  <rect x="176" y="161" width="48" height="16" rx="8" fill="#3F3F3F"/>
+  <rect x="232" y="161" width="48" height="16" rx="8" fill="#3F3F3F"/>
+  <rect x="288" y="161" width="48" height="16" rx="8" fill="#3F3F3F"/>
+  <text x="356" y="177" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#EDEDED">pitch &#183; badges &#183; config &#183; contributing</text>
+  <text x="656" y="177" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#6C6C74">la puerta</text>
+
+  <!-- HIGH -->
+  <rect x="40" y="230" width="640" height="74" rx="10" fill="#2A1214"/>
+  <text x="64" y="275" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="bold" fill="#D71921">HIGH</text>
+  <rect x="146" y="250" width="56" height="24" rx="4" fill="#3F3F3F"/>
+  <rect x="210" y="256" width="30" height="14" rx="7" fill="#D71921"/>
+  <rect x="246" y="256" width="30" height="14" rx="7" fill="#D71921"/>
+  <rect x="286" y="248" width="56" height="28" rx="4" fill="#D71921"/>
+  <text x="358" y="275" font-family="ui-monospace, Menlo, monospace" font-size="15" fill="#EDEDED">banner &#183; hero &#183; nav &#183; galer&#237;a</text>
+  <text x="656" y="275" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#B07576">el escaparate</text>
+</svg>

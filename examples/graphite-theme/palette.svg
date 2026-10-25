@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="376" viewBox="0 0 640 376" role="img" aria-label="the graphite palette">
+  <rect width="640" height="376" rx="8" fill="#191919" stroke="#3F3F3F" stroke-width="2"/>
+
+  <rect x="24" y="24" width="592" height="48" rx="6" fill="#191919" stroke="#3F3F3F" stroke-width="1"/>
+  <text x="44" y="53" font-family="monospace" font-size="15" fill="#8A8A8A">background</text>
+  <text x="592" y="53" text-anchor="end" font-family="monospace" font-size="14" fill="#8A8A8A">#191919</text>
+
+  <rect x="24" y="80" width="592" height="48" rx="6" fill="#222222" stroke="#3F3F3F" stroke-width="1"/>
+  <text x="44" y="109" font-family="monospace" font-size="15" fill="#8A8A8A">surface</text>
+  <text x="592" y="109" text-anchor="end" font-family="monospace" font-size="14" fill="#8A8A8A">#222222</text>
+
+  <rect x="24" y="136" width="592" height="48" rx="6" fill="#3F3F3F" stroke="#3F3F3F" stroke-width="1"/>
+  <text x="44" y="165" font-family="monospace" font-size="15" fill="#8A8A8A">border</text>
+  <text x="592" y="165" text-anchor="end" font-family="monospace" font-size="14" fill="#8A8A8A">#3F3F3F</text>
+
+  <rect x="24" y="192" width="592" height="48" rx="6" fill="#8A8A8A" stroke="#3F3F3F" stroke-width="1"/>
+  <text x="44" y="221" font-family="monospace" font-size="15" fill="#191919">muted</text>
+  <text x="592" y="221" text-anchor="end" font-family="monospace" font-size="14" fill="#191919">#8A8A8A</text>
+
+  <rect x="24" y="248" width="592" height="48" rx="6" fill="#EDEDED" stroke="#3F3F3F" stroke-width="1"/>
+  <text x="44" y="277" font-family="monospace" font-size="15" fill="#191919">foreground</text>
+  <text x="592" y="277" text-anchor="end" font-family="monospace" font-size="14" fill="#191919">#EDEDED</text>
+
+  <rect x="24" y="304" width="592" height="48" rx="6" fill="#D71921"/>
+  <text x="44" y="333" font-family="monospace" font-size="15" fill="#EDEDED">accent</text>
+  <text x="592" y="333" text-anchor="end" font-family="monospace" font-size="14" fill="#EDEDED">#D71921</text>
+</svg>

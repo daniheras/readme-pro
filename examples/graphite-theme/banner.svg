@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160" role="img" aria-label="graphite - quiet, dark, one red accent">
+  <rect width="640" height="160" fill="#191919"/>
+  <text x="320" y="80" text-anchor="middle" font-family="monospace" font-size="42" fill="#EDEDED">graphite</text>
+  <rect x="308" y="98" width="24" height="5" fill="#D71921"/>
+  <text x="320" y="132" text-anchor="middle" font-family="monospace" font-size="13" fill="#8A8A8A">quiet &#183; dark &#183; one red accent</text>
+</svg>

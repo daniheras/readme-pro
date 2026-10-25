@@ -35,7 +35,7 @@ TOOL_INSTALL_REQUIRED = re.compile(
     r"[^\n]*\b(imagemagick|magick|vhs|ffmpeg|ttyd)\b",
     re.IGNORECASE,
 )
-MEDIUM_ORDER = ["Features", "Install(ation)?", "Usage", "Contributing", "License"]
+MEDIUM_ORDER = ["Features", "Instal((ar)|l(ation)?)", "Usage", "Contributing", "Licen(cia|se)?(n)?"]
 
 
 def read(path: Path) -> str:
@@ -114,7 +114,7 @@ def checks_for(eid: int, readme: str, project: Path):
             ("Usage references real entry point and flags",
              "todo-scan" in readme and "--fail-on-hit" in readme),
             ("Does not claim a specific license (flagged instead)",
-             (not re.search(r"^#+\s*license\b", readme, re.I | re.M))
+             (not re.search(r"^#+\s*licen(cia|se)\b", readme, re.I | re.M))
              or bool(UNCERTAINTY.search(section(readme, "License")))),
         ]
 
@@ -129,8 +129,8 @@ def checks_for(eid: int, readme: str, project: Path):
              all([
                  re.search(r"hero|banner", readme, re.I),
                  has_nav(readme),
-                 re.search(r"^#+\s*install\b", readme, re.I | re.M),
-                 re.search(r"community|contributing|license", readme, re.I),
+                 re.search(r"^#+\s*instal((ar)|l(ation)?)\b", readme, re.I | re.M),
+                 re.search(r"community|contributing|licen(cia|se)", readme, re.I),
              ])),
             ("Hero is a .tape plan or marked placeholder (no fake remote screenshots)",
              bool(tapes) or "tape" in readme.lower() or not remote_asset_urls(readme)),
@@ -176,8 +176,8 @@ def checks_for(eid: int, readme: str, project: Path):
                  re.search(r"hero|banner", readme, re.I),
                  len(badge_urls(readme)) >= 1,
                  has_nav(readme),
-                 re.search(r"^#+\s*install\b", readme, re.I | re.M),
-                 re.search(r"community|contributing|license", readme, re.I),
+                 re.search(r"^#+\s*instal((ar)|l(ation)?)\b", readme, re.I | re.M),
+                 re.search(r"community|contributing|licen(cia|se)", readme, re.I),
              ])),
             ("Tool-free pipeline: no ImageMagick/vhs install required by the README",
              not TOOL_INSTALL_REQUIRED.search(readme)),
