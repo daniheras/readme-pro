@@ -63,6 +63,8 @@ there.
 
 ## Install
 
+### OpenCode
+
 In a project — copy the skills you want:
 
 ```sh
@@ -78,6 +80,40 @@ Globally: same thing into `~/.config/opencode/skills/`. Or point your
   "skills": ["~/Work/readme-pro/.opencode/skills"]
 }
 ```
+
+### Claude Code
+
+One step (Claude Code 2.1.275+, the repo is a plugin marketplace):
+
+```sh
+claude plugin marketplace add daniheras/readme-pro
+claude plugin install readme-pro@readme-pro
+```
+
+Skills load namespaced (`/readme-pro:readme-pro-low`, `/readme-pro:readme-pro-high`...).
+
+Prefer skills only? The format is the [Agent Skills](https://agentskills.io)
+standard, so plain copy works too:
+
+```sh
+cp -r readme-pro/.opencode/skills/readme-pro* your-repo/.claude/skills/
+```
+
+(`~/.claude/skills/` for personal, all-projects use.)
+
+### Other agents
+
+Any tool that reads `SKILL.md` can take the folders as-is — copy them into
+its skills location. `.agents/skills/` is the cross-tool convention (OpenCode
+and Claude Code read it too):
+
+```sh
+cp -r readme-pro/.opencode/skills/readme-pro* your-repo/.agents/skills/
+```
+
+No skills support at all? The files are plain Markdown: point your agent at
+the `SKILL.md` of the level you want (or drop it into your `AGENTS.md`
+context) and it works.
 
 ## Usage
 

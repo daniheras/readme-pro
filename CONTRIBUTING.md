@@ -12,7 +12,10 @@ them.
    included) — grading is the only honest way to show the skill improved
    rather than just changed.
 4. Fixtures are small but real: their code must actually work.
-5. Tone: skill content is sober English; this repo itself swears a little.
+5. Skills are edited in `.opencode/skills/` — that's the single source of
+   truth. If you touch a `SKILL.md`, run `scripts/sync-claude-plugin.sh`
+   before committing so the Claude Code plugin stays in sync.
+6. Tone: skill content is sober English; this repo itself swears a little.
    Respect both registers.
 
 ## Don't fabricate

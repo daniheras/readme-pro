@@ -1,0 +1,15 @@
+{
+  "name": "readme-pro",
+  "description": "Skills that build READMEs matched to each project's philosophy - from brutally minimal to full showcase",
+  "owner": {
+    "name": "Dani Heras",
+    "url": "https://github.com/daniheras"
+  },
+  "plugins": [
+    {
+      "name": "readme-pro",
+      "source": "./plugin",
+      "description": "Auto router + three README intensity levels (minimal / professional / showcase)"
+    }
+  ]
+}
